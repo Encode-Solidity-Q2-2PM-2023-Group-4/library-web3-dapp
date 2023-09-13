@@ -43,7 +43,19 @@ export class AppService {
     return { success: true, txHash: tx.hash };
   }
 
-  // @notice In future versions, we will have it so that the renter does not have own permissions as well, either by revoking owner privileges after minting and granting access or by creating a Library contract which is the owner of all books and which also grants use permissions.
+  /**
+   * 
+   * @notice In future versions, we will have it so that the renter does not have
+   * own permissions as well, either by revoking owner privileges after minting and
+   * granting access or by creating a Library contract which is the owner of all 
+   * books and which also grants use permissions.
+   * 
+   * The ideal logic flow would be 
+   * 
+   *    rental request -> mint -> grant use permissions (-> revoke ownership)
+   * 
+   * where the last step comes if we follow the former of the two expansion options.
+   */
   async rent(URI: string, Metadata: string[], expires: number): Promise<any> {
     this.mintBook(URI, Metadata, expires, true);
   }
