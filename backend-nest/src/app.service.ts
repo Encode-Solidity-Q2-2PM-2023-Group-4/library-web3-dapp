@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { ethers } from 'ethers';
 import * as bookJson from './assets/Book.json';
 import assert from 'assert';
+import 'dotenv/config';
+require('dotenv').config();
 
 @Injectable()
 export class AppService {
