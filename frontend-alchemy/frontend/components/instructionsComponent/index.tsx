@@ -13,32 +13,18 @@ export default function InstructionsComponent() {
       </header>
 
       <div className={styles.buttons_container}>
-        <a
-          target={"_blank"}
-        >
-          <div className={styles.button}>
-            <p>Add Components</p>
-          </div>
-        </a>
-        <a
-          target={"_blank"}
-        >
-          <div className={styles.button}>
-            <p>Explore Templates</p>
-          </div>
-        </a>
-        <a
-          target={"_blank"}
-        >
-          <div className={styles.button}>
-            <p>Visit Docs</p>
-          </div>
-        </a>
-        <a>
-          <div className={styles.button}>
-            <p>Contribute</p>
-          </div>
-        </a>
+        <div className={styles.button}>
+          <p>Add Components</p>
+        </div>
+        <div className={styles.button}>
+          <p>Explore Templates</p>
+        </div>
+        <div className={styles.button}>
+          <p>Visit Docs</p>
+        </div>
+        <div className={styles.button}>
+          <p>Contribute</p>
+        </div>
       </div>
     </div>
   );
