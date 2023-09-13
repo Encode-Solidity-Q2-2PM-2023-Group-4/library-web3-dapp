@@ -24,4 +24,9 @@ export class AppController {
   async rent(@Body() body: RentDTO): Promise<any> {
     return this.appService.rent(body.URI, body.metadata, body.expires);
   }
+
+  @Get("userOf")
+  async userOf(): Promise<any> {
+    return await this.appService.userOf();
+  }
 }
