@@ -126,13 +126,13 @@ function BookList() {
 
 function Buttons_layout(){
   return(      <div className={styles.buttons_container}>
-    <Mint_book></Mint_book>
-    <User_of></User_of>
+    <RentBook></RentBook>
+    <UserOf></UserOf>
   </div>)
 }
 
 
-function User_of(): any{
+function UserOf(): any{
   const [data, setData] = useState<any>(null);
   const [isLoading, setLoading] = useState(false);
 
@@ -163,17 +163,17 @@ function User_of(): any{
   );
 }
 
-function Mint_book(): any{
+function RentBook(): any{
   const { config } = usePrepareSendTransaction();
   const { data, isLoading, isSuccess } = useSendTransaction(config);
   const [value, setValue] = useState("");
 
-  if (isLoading) return <p>Requesting mint from API...</p>;
+  if (isLoading) return <p>Requesting rent from API...</p>;
 
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ value: value })
+    body: JSON.stringify({ URI: "https://bafybeibpsknufhndbff7nuggensfgtwul7xunmxfhcysk767vp3uezyfyi.ipfs.cf-ipfs.com/", Metadata: [], expires: 120 })
   };
 
   if (!data) return (
@@ -181,7 +181,10 @@ function Mint_book(): any{
       <button
         disabled={isLoading}
         className={styles.button}
-        onClick={() => fetch("http://localhost:3001/mint", requestOptions)}>
+        onClick={() => {
+          fetch("http://localhost:3001/rent", requestOptions)
+        }}
+      >
         Rent NFT
       </button>
       {isLoading && <div>Check Wallet</div>}
