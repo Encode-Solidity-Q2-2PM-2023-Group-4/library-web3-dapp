@@ -5,8 +5,6 @@ export class RentDTO {
     URI: string;
     @ApiProperty({ type: String, required: true, default: [] })
     metadata: string[];
-    @ApiProperty({ type: String, required: true, default: "0x0000000000000000000000000000000000000000" })
-    user: string;
     @ApiProperty({ type: Number, required: true, default: 0 })
     expires: number;
 }
