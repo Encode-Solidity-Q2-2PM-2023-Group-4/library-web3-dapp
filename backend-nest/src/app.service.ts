@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ethers } from 'ethers';
 import * as bookJson from './assets/Book.json';
+import assert from 'assert';
 
 @Injectable()
 export class AppService {
@@ -42,6 +43,7 @@ export class AppService {
     return { success: true, txHash: tx.hash };
   }
 
+  // @notice In future versions, we will have it so that the renter does not have own permissions as well, either by revoking owner privileges after minting and granting access or by creating a Library contract which is the owner of all books and which also grants use permissions.
   async rent(URI: string, Metadata: string[], expires: number): Promise<any> {
     this.mintBook(URI, Metadata, expires, true);
   }
@@ -51,8 +53,8 @@ export class AppService {
     assert(narg==1);
     const tokenid = process.argv[2];
     
-    const usr_addr = await this.contract.userOf(tokenid);
-    console.log(`The user who is renting token-${tokenid} is ${usr_addr}`);
+    const usr_addr = await this.bookContract.userOf(tokenid);
+    console.log(`The user who is renting token ${tokenid} is ${usr_addr}`);
   
     //const exp_time = await bookContract.userExpires(tokenid);
     //console.log(`The expiry time is ${exp_time}`);
