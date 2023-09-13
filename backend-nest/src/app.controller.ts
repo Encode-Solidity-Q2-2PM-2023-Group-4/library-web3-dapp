@@ -1,15 +1,11 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { MintBookDTO } from './dtos/mintBook.dto';
+import { SetUserDTO } from './dtos/setUser.dto';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
 
   @Post()
   async mintBook(@Body() body: MintBookDTO): Promise<any> {
@@ -18,8 +14,9 @@ export class AppController {
   }
 
   @Post()
-  setUser(): any {
-    return this.appService.setUser();
+  async setUser(@Body() body: SetUserDTO): Promise<any> {
+    console.log({ body });
+    return await this.appService.setUser(body.tokenID, body.user, body.expires);
   }
 
   @Post()

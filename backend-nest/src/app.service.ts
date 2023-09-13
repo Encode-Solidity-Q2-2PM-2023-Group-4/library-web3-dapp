@@ -23,20 +23,20 @@ export class AppService {
     );
   }
 
-  getHello(): string {
-    return 'Hello World!';
-  }
-
   async mintBook(URI: string, Metadata: string[]): Promise<any> {
-    console.log("Minting book to " + this.wallet.address);
+    console.log(`Minting book to ${this.wallet.address}.`);
     const tx = await this.bookContract.mint(URI, Metadata);
     const receipt = await tx.wait();
     console.log(receipt);
     return { success: true, txHash: tx.hash };
   }
 
-  setUser(): any {
-    return true
+  async setUser(tokenID: number, user: string, expires: number): Promise<any> {
+    console.log(`Setting user of Token ${tokenID} to ${user}.`);
+    const tx = await this.bookContract.setUser(tokenID, user, expires);
+    const receipt = await tx.wait();
+    console.log(receipt);
+    return { success: true, txHash: tx.hash };
   }
 
   rent(): any {
