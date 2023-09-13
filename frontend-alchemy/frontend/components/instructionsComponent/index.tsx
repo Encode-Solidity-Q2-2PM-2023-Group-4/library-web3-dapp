@@ -6,9 +6,9 @@ export default function InstructionsComponent() {
       <header className={styles.header_container}>
         <div className={styles.header}>
           <h1>
-            create<span>-web3-dapp</span>
+            Web3 <span>E-Book Library</span>
           </h1>
-          <h3>The ultimate solution to create web3 applications</h3>
+          <h3>The ultimate solution for your web3 literary assets</h3>
         </div>
       </header>
 
