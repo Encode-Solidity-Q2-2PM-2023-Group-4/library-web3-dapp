@@ -1,4 +1,9 @@
+import { useEffect, useState } from "react";
 import styles from "./instructionsComponent.module.css";
+import { useAccount, useBalance, useContractRead, useNetwork, usePrepareSendTransaction, useSendTransaction } from "wagmi";
+import 'dotenv/config';
+import { ethers } from 'ethers';
+require('dotenv').config();
 
 export default function InstructionsComponent() {
   return (
@@ -6,26 +11,48 @@ export default function InstructionsComponent() {
       <header className={styles.header_container}>
         <div className={styles.header}>
           <h1>
-            Web3 <span>E-Book Library</span>
+            nftLibrary<span> Dapp </span>
           </h1>
-          <h3>The ultimate solution for your web3 literary assets</h3>
         </div>
       </header>
-
-      <div className={styles.buttons_container}>
-        <div className={styles.button}>
-          <p>Button 1</p>
-        </div>
-        <div className={styles.button}>
-          <p>Button 2</p>
-        </div>
-        <div className={styles.button}>
-          <p>Button 3</p>
-        </div>
-        <div className={styles.button}>
-          <p>Button 4</p>
-        </div>
-      </div>
+      <PageBody></PageBody>
     </div>
   );
 }
+
+function PageBody() {
+  return (
+    <div>
+      <BookTable></BookTable>
+    </div>
+  )
+}
+
+
+function BookTable() {
+  return (
+  <div style={{ textAlign: "left" }}>
+  <table>
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Year of Publication</th>
+        <th>Link</th>
+        <th>RENT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alland Edgar Poe</td>
+        <td>Alone</td>
+        <td>1993</td>
+        <td><a href="https://bafybeibpsknufhndbff7nuggensfgtwul7xunmxfhcysk767vp3uezyfyi.ipfs.cf-ipfs.com/">PREVIEW</a></td>
+        <td><button>RENT</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  )
+}
+
