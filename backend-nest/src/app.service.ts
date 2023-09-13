@@ -34,6 +34,11 @@ export class AppService {
     return { success: true, txHash: tx.hash };
   }
 
+  /**
+   * 
+   * @notice This is (currently) obsolete, as we have not yet separated minting from renting.
+   * 
+   */
   async setUser(tokenID: number, user: string, expires: number, receipt_: boolean): Promise<any> {
     console.log(`Setting user of Token ${tokenID} to ${user}.`);
     const tx = await this.bookContract.setUser(tokenID, user, expires);
@@ -55,6 +60,7 @@ export class AppService {
    *    rental request -> mint -> grant use permissions (-> revoke ownership)
    * 
    * where the last step comes if we follow the former of the two expansion options.
+   * 
    */
   async rent(URI: string, Metadata: string[], expires: number): Promise<any> {
     this.mintBook(URI, Metadata, expires, true);
