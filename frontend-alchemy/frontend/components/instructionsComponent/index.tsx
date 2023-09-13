@@ -14,16 +14,16 @@ export default function InstructionsComponent() {
 
       <div className={styles.buttons_container}>
         <div className={styles.button}>
-          <p>Add Components</p>
+          <p>Button 1</p>
         </div>
         <div className={styles.button}>
-          <p>Explore Templates</p>
+          <p>Button 2</p>
         </div>
         <div className={styles.button}>
-          <p>Visit Docs</p>
+          <p>Button 3</p>
         </div>
         <div className={styles.button}>
-          <p>Contribute</p>
+          <p>Button 4</p>
         </div>
       </div>
     </div>
