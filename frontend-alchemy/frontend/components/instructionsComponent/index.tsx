@@ -11,21 +11,44 @@ export default function InstructionsComponent() {
           <h3>The ultimate solution for your web3 literary assets</h3>
         </div>
       </header>
-
-      <div className={styles.buttons_container}>
-        <div className={styles.button}>
-          <p>Button 1</p>
-        </div>
-        <div className={styles.button}>
-          <p>Button 2</p>
-        </div>
-        <div className={styles.button}>
-          <p>Button 3</p>
-        </div>
-        <div className={styles.button}>
-          <p>Button 4</p>
-        </div>
+      <PageBody></PageBody>
       </div>
     </div>
   );
+}
+
+
+function PageBody() {
+  return (
+    <div className={styles.buttons_container}>
+      <BookTable></BookTable>
+    </div>
+  )
+}
+
+function BookTable() {
+  return (
+  <div>
+  <table>
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Year of Publication</th>
+        <th>Link</th>
+        <th>RENT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alland Edgar Poe</td>
+        <td>Alone</td>
+        <td>1993</td>
+        <td><a href="https://bafybeibpsknufhndbff7nuggensfgtwul7xunmxfhcysk767vp3uezyfyi.ipfs.cf-ipfs.com/">PREVIEW</a></td>
+        <td><div className={styles.buttons_container}>RENT</div></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  )
 }
