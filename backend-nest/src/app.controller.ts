@@ -11,7 +11,7 @@ export class AppController {
   @Post()
   async mintBook(@Body() body: MintBookDTO): Promise<any> {
     console.log({ body });
-    return await this.appService.mintBook(body.URI, body.metadata, body.receipt_);
+    return await this.appService.mintBook(body.URI, body.metadata, body.expires, body.receipt_);
   }
 
   @Post()
@@ -22,6 +22,6 @@ export class AppController {
 
   @Post()
   async rent(@Body() body: RentDTO): Promise<any> {
-    return this.appService.rent(body.URI, body.metadata, body.user, body.expires);
+    return this.appService.rent(body.URI, body.metadata, body.expires);
   }
 }

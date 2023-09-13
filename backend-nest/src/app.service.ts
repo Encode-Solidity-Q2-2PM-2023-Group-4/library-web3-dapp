@@ -24,9 +24,9 @@ export class AppService {
   }
 
   // @param receipt_ will determine whether the receipt is printed to console or not, for example if we are just minting, we might want to see it, but for renting, where minting and setting user is involved, we may nott want to see the receipt until the rental is made.s
-  async mintBook(URI: string, Metadata: string[], receipt_: boolean): Promise<any> {
+  async mintBook(URI: string, Metadata: string[], expires: number, receipt_: boolean): Promise<any> {
     console.log(`Minting book to ${this.wallet.address}.`);
-    const tx = await this.bookContract.mint(URI, Metadata);
+    const tx = await this.bookContract.mint(URI, Metadata, expires);
     const receipt = await tx.wait();
     if (receipt_)
       console.log(receipt);
@@ -42,7 +42,7 @@ export class AppService {
     return { success: true, txHash: tx.hash };
   }
 
-  async rent(URI: string, Metadata: string[], user: string, expires: number): Promise<any> {
-    this.mintBook(URI, Metadata, false);
+  async rent(URI: string, Metadata: string[], expires: number): Promise<any> {
+    this.mintBook(URI, Metadata, expires, true);
   }
 }

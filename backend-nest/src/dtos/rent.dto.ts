@@ -1,9 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
 
 export class RentDTO {
-    @ApiProperty({ type: String, required: true, default: "Empty URI" })
+    @ApiProperty({ type: String, required: true, default: "" })
     URI: string;
-    @ApiProperty({ type: String, required: true, default: "Empty Metadata" })
+    @ApiProperty({ type: String, required: true, default: [] })
     metadata: string[];
     @ApiProperty({ type: String, required: true, default: "0x0000000000000000000000000000000000000000" })
     user: string;
