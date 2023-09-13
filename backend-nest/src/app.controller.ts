@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { MintBookDTO } from './dtos/mintBook.dto';
 import { SetUserDTO } from './dtos/setUser.dto';
