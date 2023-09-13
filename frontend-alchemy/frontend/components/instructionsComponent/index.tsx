@@ -150,7 +150,7 @@ function User_of(): any{
           });
         }}
     >
-      User of the NFT
+      Check NFT User
     </button>
   );
 
