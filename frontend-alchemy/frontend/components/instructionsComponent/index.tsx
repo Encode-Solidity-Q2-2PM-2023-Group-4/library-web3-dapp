@@ -126,12 +126,8 @@ function BookList() {
 
 function Buttons_layout(){
   return(      <div className={styles.buttons_container}>
-    <div className={styles.button}>
-      <Mint_book></Mint_book>
-    </div>
-    <div className={styles.button}>
-      <User_of></User_of>
-    </div>
+    <Mint_book></Mint_book>
+    <User_of></User_of>
   </div>)
 }
 
@@ -154,7 +150,7 @@ function User_of(): any{
           });
         }}
     >
-      User of the nft
+      User of the NFT
     </button>
   );
 
@@ -184,8 +180,9 @@ function Mint_book(): any{
     <div>
       <button
         disabled={isLoading}
+        className={styles.button}
         onClick={() => fetch("http://localhost:3001/mint", requestOptions)}>
-        RENT NFT
+        Rent NFT
       </button>
       {isLoading && <div>Check Wallet</div>}
       {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
