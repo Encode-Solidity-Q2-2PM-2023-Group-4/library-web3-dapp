@@ -27,8 +27,12 @@ export class AppService {
     return 'Hello World!';
   }
 
-  mint(): any {
-    return true
+  async mintBook(URI: string, Metadata: string[]): Promise<any> {
+    console.log("Minting book to " + this.wallet.address);
+    const tx = await this.bookContract.mint(URI, Metadata);
+    const receipt = await tx.wait();
+    console.log(receipt);
+    return { success: true, txHash: tx.hash };
   }
 
   setUser(): any {
