@@ -8,19 +8,19 @@ import { RentDTO } from './dtos/rent.dto';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Post()
+  @Post("mint-book")
   async mintBook(@Body() body: MintBookDTO): Promise<any> {
     console.log({ body });
     return await this.appService.mintBook(body.URI, body.metadata, body.expires, body.receipt_);
   }
 
-  @Post()
+  @Post("set-user")
   async setUser(@Body() body: SetUserDTO): Promise<any> {
     console.log({ body });
     return await this.appService.setUser(body.tokenID, body.user, body.expires, body.receipt_);
   }
 
-  @Post()
+  @Post("rent")
   async rent(@Body() body: RentDTO): Promise<any> {
     return this.appService.rent(body.URI, body.metadata, body.expires);
   }
