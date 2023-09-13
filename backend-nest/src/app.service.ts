@@ -46,8 +46,7 @@ export class AppService {
     this.mintBook(URI, Metadata, expires, true);
   }
 
-    async userOf() {
-
+  async userOf() {
     const narg = process.argv.length - 2;
     assert(narg==1);
     const tokenid = process.argv[2];
@@ -57,6 +56,5 @@ export class AppService {
   
     //const exp_time = await bookContract.userExpires(tokenid);
     //console.log(`The expiry time is ${exp_time}`);
-
   }
 }
