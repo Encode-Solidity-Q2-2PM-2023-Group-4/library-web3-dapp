@@ -26,7 +26,7 @@ export class AppController {
   }
 
   @Get("user-of")
-  async userOf(): Promise<any> {
-    return await this.appService.userOf();
+  async userOf(@Param("tokenID") tokenID:string): Promise<any> {
+    return await this.appService.userOf(tokenID);
   }
 }
