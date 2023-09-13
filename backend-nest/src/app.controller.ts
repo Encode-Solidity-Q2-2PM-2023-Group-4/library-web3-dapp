@@ -25,7 +25,7 @@ export class AppController {
     return this.appService.rent(body.URI, body.metadata, body.expires);
   }
 
-  @Get("user-of")
+  @Get("user-of/:tokenID")
   async userOf(): Promise<any> {
     return await this.appService.userOf();
   }
