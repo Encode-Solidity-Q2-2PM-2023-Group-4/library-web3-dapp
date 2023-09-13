@@ -173,7 +173,7 @@ function RentBook(): any{
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ URI: "https://bafybeibpsknufhndbff7nuggensfgtwul7xunmxfhcysk767vp3uezyfyi.ipfs.cf-ipfs.com/", Metadata: [], expires: 120 })
+    body: JSON.stringify({ URI: "https://bafybeibpsknufhndbff7nuggensfgtwul7xunmxfhcysk767vp3uezyfyi.ipfs.cf-ipfs.com/", Metadata: [], expires: 60 })
   };
 
   if (!data) return (
