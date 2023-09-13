@@ -23,23 +23,25 @@ export class AppService {
     );
   }
 
-  async mintBook(URI: string, Metadata: string[]): Promise<any> {
+  async mintBook(URI: string, Metadata: string[], receipt_: boolean): Promise<any> {
     console.log(`Minting book to ${this.wallet.address}.`);
     const tx = await this.bookContract.mint(URI, Metadata);
     const receipt = await tx.wait();
-    console.log(receipt);
+    if (receipt_)
+      console.log(receipt);
     return { success: true, txHash: tx.hash };
   }
 
-  async setUser(tokenID: number, user: string, expires: number): Promise<any> {
+  async setUser(tokenID: number, user: string, expires: number, receipt_: boolean): Promise<any> {
     console.log(`Setting user of Token ${tokenID} to ${user}.`);
     const tx = await this.bookContract.setUser(tokenID, user, expires);
     const receipt = await tx.wait();
-    console.log(receipt);
+    if (receipt_)
+      console.log(receipt);
     return { success: true, txHash: tx.hash };
   }
 
-  rent(): any {
-    return true
+  async rent(URI: string, Metadata: string[], user: string, expires: number): Promise<any> {
+    this.mintBook(URI, Metadata, false);
   }
 }
