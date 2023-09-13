@@ -45,4 +45,18 @@ export class AppService {
   async rent(URI: string, Metadata: string[], expires: number): Promise<any> {
     this.mintBook(URI, Metadata, expires, true);
   }
+
+    async userOf() {
+
+    const narg = process.argv.length - 2;
+    assert(narg==1);
+    const tokenid = process.argv[2];
+    
+    const usr_addr = await this.contract.userOf(tokenid);
+    console.log(`The user who is renting token-${tokenid} is ${usr_addr}`);
+  
+    //const exp_time = await bookContract.userExpires(tokenid);
+    //console.log(`The expiry time is ${exp_time}`);
+
+  }
 }
