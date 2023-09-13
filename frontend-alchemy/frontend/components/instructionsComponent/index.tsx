@@ -91,7 +91,7 @@ function BookList() {
         <tbody>
           <tr>
             <td>
-              <strong>Author:</strong> Alland Edgar Poe
+              <strong>Author:</strong> Edgar Allan Poe
             </td>
           </tr>
           <tr>
