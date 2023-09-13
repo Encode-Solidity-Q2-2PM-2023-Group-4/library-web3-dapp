@@ -29,5 +29,4 @@ export class AppController {
   async userOf(): Promise<any> {
     return await this.appService.userOf();
   }
-
 }
