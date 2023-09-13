@@ -68,15 +68,13 @@ export class AppService {
     this.mintBook(URI, Metadata, expires, true);
   }
 
-  async userOf() {
-    const narg = process.argv.length - 2;
-    assert(narg==1);
-    const tokenid = process.argv[2];
-    
-    const usr_addr = await this.bookContract.userOf(tokenid);
-    console.log(`The user who is renting token ${tokenid} is ${usr_addr}`);
+  async userOf(tokenID: string) {
+
+    const usr_addr = await this.bookContract.userOf(tokenID);
+    console.log(`The user who is renting token-${tokenID} is ${usr_addr}`);
   
     //const exp_time = await bookContract.userExpires(tokenid);
     //console.log(`The expiry time is ${exp_time}`);
+
   }
 }
