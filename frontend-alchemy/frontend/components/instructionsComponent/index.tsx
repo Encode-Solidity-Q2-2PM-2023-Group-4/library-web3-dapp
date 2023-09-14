@@ -62,7 +62,7 @@ export default function InstructionsComponent() {
       <header className={styles.header_container}>
         <div className={styles.header}>
           <h1>
-            nftLibrary<span> Dapp </span>
+            nftLibrary_<span> dApp </span>
           </h1>
         </div>
       </header>
