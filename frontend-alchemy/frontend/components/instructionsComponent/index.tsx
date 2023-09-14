@@ -73,12 +73,12 @@ export default function InstructionsComponent() {
 
 function PageBody() {
   return (
-    <div>
-      <Thumbnail imageUrl="https://bafybeibpsknufhndbff7nuggensfgtwul7xunmxfhcysk767vp3uezyfyi.ipfs.cf-ipfs.com/" />
-      <BookList></BookList>
-      <br></br>
-      <Buttons_layout></Buttons_layout>
-    </div>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+    <Thumbnail imageUrl="https://i0.wp.com/interestingliterature.com/wp-content/uploads/2013/08/poe1.png?ssl=1" />
+    <BookList></BookList>
+    <br></br>
+    <Buttons_layout></Buttons_layout>
+  </div>
   )
 }
 
