@@ -22,11 +22,13 @@ export class AppController {
 
   @Post("rent")
   async rent(@Body() body: RentDTO): Promise<any> {
+    console.log({ body })
     return this.appService.rent(body.URI, body.metadata, body.expires);
   }
 
   @Get("user-of/:tokenID")
   async userOf(@Param("tokenID") tokenID:string): Promise<any> {
+    console.log({ tokenID: tokenID })
     return await this.appService.userOf(tokenID);
   }
 }

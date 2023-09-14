@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./instructionsComponent.module.css";
-import { useAccount, useBalance, useContractRead, useNetwork, usePrepareSendTransaction, useSendTransaction } from "wagmi";
+import { usePrepareSendTransaction, useSendTransaction } from "wagmi";
 import 'dotenv/config';
-import { ethers } from 'ethers';
 require('dotenv').config();
 import React from "react";
 
@@ -63,7 +62,7 @@ export default function InstructionsComponent() {
       <header className={styles.header_container}>
         <div className={styles.header}>
           <h1>
-            nftLibrary<span> Dapp </span>
+            nftLibrary_<span> dApp </span>
           </h1>
         </div>
       </header>
@@ -136,13 +135,19 @@ function UserOf(): any{
   const [data, setData] = useState<any>(null);
   const [isLoading, setLoading] = useState(false);
 
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+    tokenID: "6",
+  };
+
   if (!data) return (
     <button
         disabled={isLoading}
         className={styles.button}
         onClick={() => {
           setLoading(true);
-          fetch("http://localhost:3001/user-of")
+          fetch(`http://localhost:3001/user-of`, requestOptions)
           .then((res) => res.json())
           .then((data) => {
             setData(data);
@@ -166,15 +171,22 @@ function UserOf(): any{
 function RentBook(): any{
   const { config } = usePrepareSendTransaction();
   const { data, isLoading, isSuccess } = useSendTransaction(config);
-  const [value, setValue] = useState("");
+  var seconds = new Date().getTime() / 1000;
 
   if (isLoading) return <p>Requesting rent from API...</p>;
+
+  const body = { 
+    URI: "",
+    Metadata: [],
+    expires: seconds + 120,
+    // receipt_: true,
+  };
 
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ URI: "https://bafybeibpsknufhndbff7nuggensfgtwul7xunmxfhcysk767vp3uezyfyi.ipfs.cf-ipfs.com/", Metadata: [], expires: 60 })
-  };
+    body: JSON.stringify(body),
+  }
 
   if (!data) return (
     <div>
@@ -194,9 +206,4 @@ function RentBook(): any{
   return <></>
 }
 
-
-function Set_user(): any{}
-
-function Rent(): any{}
-
-
+function SetUser(): any{}
