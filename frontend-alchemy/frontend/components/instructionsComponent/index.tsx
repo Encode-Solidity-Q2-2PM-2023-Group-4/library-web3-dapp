@@ -134,29 +134,25 @@ function Buttons_layout(){
 function UserOf(): any{
   const [data, setData] = useState<any>(null);
   const [isLoading, setLoading] = useState(false);
-
-  const requestOptions = {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-    tokenID: "6",
-  };
-
+  const [requestOptions, setrequestOptions] = useState('0');
+  
   if (!data) return (
-    <button
-        disabled={isLoading}
-        className={styles.button}
-        onClick={() => {
-          setLoading(true);
-          fetch(`http://localhost:3001/user-of`, requestOptions)
+    <div>
+    <><input type="text" name="request" id="request" value={requestOptions} onChange={event => setrequestOptions(event.target.value)} placeholder="Token ID" /><button
+      disabled={isLoading}
+      className={styles.button}
+      onClick={() => {
+        setLoading(true);
+        fetch(`http://localhost:3001/user-of/` + requestOptions)
           .then((res) => res.json())
           .then((data) => {
             setData(data);
-            setLoading(false)
+            setLoading(false);
           });
-        }}
+      } }
     >
       Check NFT User
-    </button>
+    </button></></div>
   );
 
   if (isLoading) return <p>Loading...</p>;
