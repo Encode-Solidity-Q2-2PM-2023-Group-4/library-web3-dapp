@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./instructionsComponent.module.css";
 import { usePrepareSendTransaction, useSendTransaction } from "wagmi";
+import 'dotenv/config';
+require('dotenv').config();
 import React from "react";
 
 interface Props {
