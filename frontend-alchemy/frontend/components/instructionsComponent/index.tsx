@@ -138,7 +138,7 @@ function UserOf(): any{
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
-    tokenID: JSON.stringify(6),
+    tokenID: "6",
   };
 
   if (!data) return (
@@ -172,15 +172,22 @@ function RentBook(): any{
   const { config } = usePrepareSendTransaction();
   const { data, isLoading, isSuccess } = useSendTransaction(config);
   var seconds = new Date().getTime() / 1000;
-  const body = { URI: "https://bafybeibpsknufhndbff7nuggensfgtwul7xunmxfhcysk767vp3uezyfyi.ipfs.cf-ipfs.com/", Metadata: ['title'], expires: seconds + 120 };
 
   if (isLoading) return <p>Requesting rent from API...</p>;
+
+  const body = { 
+    URI: "",
+    Metadata: [],
+    expires: seconds + 120,
+    // receipt_: true,
+  };
 
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   }
+
   if (!data) return (
     <div>
       <button
